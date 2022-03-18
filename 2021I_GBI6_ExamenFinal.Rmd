@@ -102,21 +102,25 @@ long_df <- function(df) {
 ```
 
 
-### [1 PUNTO] Genere la data ```df_long``` utilizandola función ```long_df```. 
+### [1 PUNTO] 1.4 Genere la data ```df_long``` utilizandola función ```long_df```. 
 La tabla resultante tendrá tres columnas: ```dataset, gen, expresion_level```.  
 ```{r df_long}
 # Genere la data df_long 
 df_long <- long_df(df)
 print(df_long)
-resultados <- df_long %>% group_by(gen)
-print(resultados)
+prueba <- df_long %>% group_by(gen)
+print(prueba)
 ```
 
 ### [0.5 PUNTOS] 1.5 A partir de la data ```df_long```, genere un **Descriptive table** (librería ```sjPlot```) y guárdelo en el subdirectorio "result"  con el nombre **mRNA_expr_summary.doc** (previamente debe seleccionar las celdas adecuadas con funciones de la librería ```dplyr``` en conjunto con el operador ```%>%```). 
 ```{r desc_table}
 # Escriba el código para crear el Descriptive table 
-library(sjPlot)
-summary(cow)
+cancer_mama <- prueba %>% group_by(gen) %>% mutate(row = row_number()) %>%
+  tidyr::pivot_wider(names_from = gen, values_from = expresion_level) %>%
+  select(-row)
+
+descr(cancer_mama) %>% tab_df(title = "Estadistica descriptiva del cancer de MAMA y su nivel de expresion de los diferentes genes",
+                              file = "mRNA_expr_summary.doc")
 ```
 
 ### [0.5 PUNTOS] 1.6 Interprete los resultados de la tabla resultante de la sección 1.5. 
@@ -124,7 +128,12 @@ summary(cow)
 
 ```{tex}
 # Escriba aquí su interpretación 
+cancer_mama <- resultados %>% group_by(gen) %>% mutate(row = row_number()) %>%
+  tidyr::pivot_wider(names_from = gen, values_from = expresion_level) %>%
+  select(-row)
 
+descr(cancer_mama) %>% tab_df(title = "Estadistica descriptiva del cancer de MAMA y su nivel de expresion de los diferentes genes",
+                              file = "mRNA_expr_summary.doc") 
 ```
 
 
