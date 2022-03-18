@@ -171,4 +171,45 @@ cancertype_boxplots = lapply(cancertype, function(x) {ggplot(x, aes(dataset, exp
     geom_boxplot() + theme(legend.position='none') + labs(x = "", y = "Expression level")})
 
 ```
+### [0.5 PUNTOS] 2.3 Guarde en el subdirectorio ```result``` el tercer plot de la lista ```cancertype_boxplots``` con el nombre ```boxplot3.png```. La definición de a figura debe ser de 300dpi. 
+```{r boxplot3}
+# Escriba el código para guardar la tercera figura de la lista. 
+cancertype_boxplots[3]
+ggsave("boxplot3.png", width = 6, height = 8, dpi = 300)
+
+```
+
+
+### [1 PUNTO] 2.4 Escriba la función ```reg_gen_expression```, con el parámetro ```gen```. En este caso la función visualizará una gráfica de nube de puntos (geom_point) y una regresión por tipo de "dataset". La gráfica será de comparación de gen1 con gen2; por ejemplo en el eje "x" ```GATA3``` y en el eje "y"" ```FN1```.  
+
+```{r reg_gen_exp}
+# Escriba aquí su función reg_gen_expression
+
+
+```
+
+
+### [0.5 PUNTOS] 2.5. Utilizando la función ```lapply()``` genera la lista ```reg_genplots``` con las gráficas para cada par de genes posibles. Recuerde que tiene 7 tipos de genes, se debe tener todas las combinaciones posibles por pares de genes (combinatoria sin repetición).
+```{r list_regplots}
+# Escriba el código para generar la lista. 
+
+```
+
+
+### [0.5 PUNTOS] 2.6. Guarde en el subdirectorio ```result``` el onceavo plot de la lista ```reg_genplots``` con el nombre ```regresion11.pdf```. La definición de a figura debe ser de 300dpi. 
+```{r reg11}
+# Escriba el código para guardar el onceavo plot. 
+
+```
+
+
+### [1 PUNTO] 2.7. Interprete los resultados de las figuras ```boxplot3.png``` y ```regresion11.pdf```.
+
+```{tex}
+# Esciba aquí su intepretación
+
+```
+
+## 3. CONTROL DE LA VERSIÓN [1 PUNTO]. Se verficará en ell repositorio de GitHub. 
+
 
